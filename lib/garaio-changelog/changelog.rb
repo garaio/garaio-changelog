@@ -1,6 +1,6 @@
 require 'garaio-changelog/repository'
 require 'garaio-changelog/pipeline'
-require 'garaio-changelog/text_formatter'
+require 'garaio-changelog/formatters/plain'
 
 class Changelog
 
@@ -14,8 +14,8 @@ class Changelog
     @pipeline = Pipeline.default
     processed_commits = @pipeline.call(repository_commits)
 
-    @text_formatter = TextFormatter.new
-    @text_formatter.write_to(output, processed_commits)
+    formatter = Formatters::Plain.new
+    formatter.write_to(output, processed_commits)
   end
 
 end
