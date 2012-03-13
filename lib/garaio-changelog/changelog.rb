@@ -1,6 +1,7 @@
 require 'garaio-changelog/repository'
 require 'garaio-changelog/pipeline'
 require 'garaio-changelog/formatters/plain'
+require 'garaio-changelog/formatters/console'
 
 class Changelog
 
@@ -14,7 +15,8 @@ class Changelog
     @pipeline = Pipeline.default
     processed_commits = @pipeline.call(repository_commits)
 
-    formatter = Formatters::Plain.new
+    format = options.fetch(:format) { :plain }
+    formatter = Formatters.const_get(format.to_s.capitalize).new
     formatter.write_to(output, processed_commits)
   end
 
