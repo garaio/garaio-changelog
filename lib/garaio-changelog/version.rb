@@ -1,5 +1,3 @@
-module Garaio
-  module Changelog
-    VERSION = "0.0.1"
-  end
+class Changelog
+  VERSION = "0.0.1"
 end

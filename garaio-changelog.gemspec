@@ -4,12 +4,12 @@ require "garaio-changelog/version"
 
 Gem::Specification.new do |s|
   s.name        = "garaio-changelog"
-  s.version     = Garaio::Changelog::VERSION
-  s.authors     = ["Yves Senn"]
-  s.email       = ["yves.senn@garaio.com"]
+  s.version     = Changelog::VERSION
+  s.authors     = ['Yves Senn', 'Jonas Baumann', 'Samuel Tonini']
+  s.email       = ['yves.senn@garaio.com', 'j.baumann@jone.ch', 'samuel.tonini@garaio.com']
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Git Changelog}
+  s.description = %q{Convert the git history into a nice Changelog}
 
   s.rubyforge_project = "garaio-changelog"
 
@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
 
   # specify any dependencies here; for example:
   s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_runtime_dependency "virtus"
 end

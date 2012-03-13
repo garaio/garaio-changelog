@@ -1,9 +1,3 @@
-require "garaio-changelog/version"
+require "virtus"
 require "garaio-changelog/changelog"
-
-
-module Garaio
-  module Changelog
-    # Your code goes here...
-  end
-end
+require "garaio-changelog/version"

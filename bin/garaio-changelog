@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+begin
+  require 'garaio-changelog'
+
+  log = Changelog.new(".", ARGV.first)
+  log.write_to(STDOUT, :format => :plain)
+
+rescue LoadError
+  $stderr.puts <<-EOS
+  EOS
+  exit(1)
+end
