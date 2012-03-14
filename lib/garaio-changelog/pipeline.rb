@@ -1,3 +1,5 @@
+require 'garaio-changelog/pipeline/kategorie_extractor'
+
 class Pipeline
 
   def initialize(sections)
@@ -6,12 +8,15 @@ class Pipeline
 
   def call(inputs)
     inputs.map do |input|
-      @sections.inject(input) { |i, section| section.call(i)}
-    end
+      @sections.inject(input) do |i, section|
+        next unless i
+        section.call(i)
+      end
+    end.compact
   end
 
   def self.default
-    Pipeline.new([])
+    Pipeline.new([KategorieExtractor.new])
   end
 
 end
