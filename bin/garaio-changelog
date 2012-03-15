@@ -3,10 +3,13 @@
 begin
   require 'garaio-changelog'
 
-  log = Changelog.new(".", ARGV.first)
-  log.write_to(STDOUT, :format => :plain)
+  options = ChangelogOptions.from_arguments(ARGV)
+
+  log = Changelog.new(".", options.log_range)
+  log.write_to(STDOUT, :format => options.format)
 
 rescue LoadError
+  puts "ERROR"
   $stderr.puts <<-EOS
   EOS
   exit(1)
