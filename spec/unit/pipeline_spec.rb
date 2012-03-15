@@ -10,8 +10,8 @@ describe Pipeline do
                                  zweiter_abschnitt]) }
 
   it "Jeder Abschnitt der Pipeline erhält als Input den Output des vorgängigen Abschnitts" do
-    subject.call(['first', 'second']).should == [ 'Schritt2: Schritt1: first',
-                                                  'Schritt2: Schritt1: second']
+    subject.call(['first', 'second', nil]).should == [ 'Schritt2: Schritt1: first',
+                                                       'Schritt2: Schritt1: second']
   end
 
 end

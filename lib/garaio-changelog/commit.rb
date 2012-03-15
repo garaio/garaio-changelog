@@ -8,4 +8,5 @@ class Commit
   attribute :committer, String
   attribute :committer_date, DateTime
 
+  attr_accessor :kategorie
 end
