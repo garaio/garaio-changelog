@@ -1,21 +1,17 @@
 module Formatters
-  class Plain
+  class Plain < Formatter
 
-    def write_to(output, commits)
-      commits_nach_kategorie_gruppiert = Hash.new {|hash, key| hash[key] = []}
-      commits.each do |commit|
-        commits_nach_kategorie_gruppiert[commit.kategorie] << commit
-      end
+    def write_header(output, header)
+      output << "# #{header}\n"
+    end
 
-      commits_nach_kategorie_gruppiert.each do |kategorie, commits|
-        output << "# #{kategorie.capitalize}\n" if kategorie
-        commits.each do |commit|
-          message = ''
-          message += '  ' if kategorie
-          message += "- %s [%s]\n" % [commit.message, commit.author]
-          output << message
-        end
-      end
+    def write_commit(output, commit)
+      output << ("- %s [%s]\n" % [commit.message, commit.author])
+
+    end
+
+    def indent(output, level)
+      output << ('  ' * level)
     end
 
   end
