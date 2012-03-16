@@ -12,9 +12,12 @@ describe "Garaio-Changelog Generator" do
     log.write_to(output, :format => :plain)
 
     output.rewind
-    output.readlines.should == ["- README hinzugefügt [Yves Senn]\n",
-                                "- Administrator-Benutzer hinzugefügt [Yves Senn]\n",
-                                "- Usability der Benutzermaske optimiert [Yves Senn]\n"]
+    output.readlines.should == ["# Bugfix\n",
+                                "  - hotfix: Nicht jeder kann als Admin einloggen [Yves Senn]\n",
+                                "# Feature\n",
+                                "  - README hinzugefügt [Yves Senn]\n",
+                                "  - Administrator-Benutzer hinzugefügt [Yves Senn]\n",
+                                "  - Usability der Benutzermaske optimiert [Yves Senn]\n"]
   end
 
 end

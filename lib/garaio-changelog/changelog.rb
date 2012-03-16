@@ -1,7 +1,6 @@
 require 'garaio-changelog/repository'
 require 'garaio-changelog/pipeline'
-require 'garaio-changelog/formatters/plain'
-require 'garaio-changelog/formatters/console'
+require 'garaio-changelog/formatter'
 require 'garaio-changelog/changelog_options'
 
 class Changelog

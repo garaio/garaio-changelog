@@ -1,21 +1,27 @@
+# -*- coding: utf-8 -*-
 require 'unit/spec_helper'
 require 'garaio-changelog/commit'
-require 'garaio-changelog/formatters/plain'
+require 'garaio-changelog/formatter'
 
 describe Formatters::Plain do
 
-  it "Schreibt die Commit Nachrichten auf den Output" do
-    output = stub
+  it 'Rückt zwei Spaces pro Level ein' do
+    output = mock
+    output.should_receive(:<<).with('    ')
+    subject.indent(output, 2)
+  end
 
-    output.should_receive(:<<).with("- README editiert [Yves Senn]\n")
-    output.should_receive(:<<).with("- Benuztermaske angepasst [Hans Peter]\n")
+  it 'Titelzeilen werden mit einem # dargestellt' do
+    output = mock
+    output.should_receive(:<<).with("# Titelzeile\n")
+    subject.write_header(output, 'Titelzeile')
+  end
 
-    subject.write_to(output, [Commit.new(:author => 'Yves Senn',
-                                         :message => 'README editiert'),
-                              Commit.new(:author => 'Hans Peter',
-                                         :message => 'Benuztermaske angepasst')])
-
-
+  it 'Commits werden mit Nachricht und Autor ausgegeben' do
+    output = mock
+    output.should_receive(:<<).with("- Neue Funktion [Samuel Tonini]\n")
+    subject.write_commit(output, Commit.new(:message => 'Neue Funktion',
+                                            :author => 'Samuel Tonini'))
   end
 
 end
